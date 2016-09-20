@@ -33,17 +33,17 @@ Obs. Caso o comando acima não instale os plugins do bower, dentro da raiz do pr
 
 - Para alterar propriedades de acesso ao banco de dados :
   Arquivo: application.properties, localizado em MagazineLuizaChallengeAPI\src\main\resources
-  Propriedades: spring.datasource.url
-                spring.datasource.username
-                spring.datasource.password
-                spring.jpa.hibernate.ddl-auto
+  Propriedades: - spring.datasource.url
+                - spring.datasource.username
+                - spring.datasource.password
+                - spring.jpa.hibernate.ddl-auto
 
 - Para Alterar Propriedades de configuração de Log
   Arquivo: application.properties, localizado em MagazineLuizaChallengeAPI\src\main\resources
-  Propriedades:logging.level.org.springframework.web
-			   logging.level.br.com.magazineluizachallenge.api
-               logging.level.org.hibernate
-               logging.file
+  Propriedades: - logging.level.org.springframework.web
+			          - logging.level.br.com.magazineluizachallenge.api
+                - logging.level.org.hibernate
+                - logging.file
 
 
 '---------- Instalando dependencias Api rest java ----------''
@@ -58,15 +58,15 @@ Obs. Caso o comando acima não instale os plugins do bower, dentro da raiz do pr
 '---------- Deploy da Api rest java ---------'
 
 - Deploy via Spring Tool Suite :
-    Dowload do Spring Tool Suite (https://spring.io/tools).
-    File - Import - maven - Existing Maven Projects 
-    Após a importação do projeto, abriar a classe MagazineLuizaChallengeApiApplication localizada no pacote br.com.magazineluizachallenge, clicar com o botão direito do mouse e na opção Run As, selecionar Spring Boot App.
+    - Dowload do Spring Tool Suite (https://spring.io/tools).
+    - File - Import - maven - Existing Maven Projects 
+    - Após a importação do projeto, abriar a classe MagazineLuizaChallengeApiApplication localizada no pacote br.com.magazineluizachallenge, clicar com o botão direito do mouse e na opção Run As, selecionar Spring Boot App.
 
-    Obs: Caso seja essa a opção escolhida para realizar o deploy da aplicação é importante lembrar que a url de acesso aos métodos da classe TwitterAPI será: localhost:8080/api/twitter. É importante verificar o valor da variável API_CONTEXT do arquivo config.js, localizado em : MagazineLuizaChallengeWeb\app\scripts\config.
+    - Obs: Caso seja essa a opção escolhida para realizar o deploy da aplicação é importante lembrar que a url de acesso aos métodos da classe TwitterAPI será: localhost:8080/api/twitter. É importante verificar o valor da variável API_CONTEXT do arquivo config.js, localizado em : MagazineLuizaChallengeWeb\app\scripts\config.
  
 - Deploy Apache TomCat Externo
-  Cópie o artefato demo.war localizado em  MagazineLuizaChallengeAPI/target.
-  Adicione o artefato demo.war na pasta webapps do servidor.
-  Startar servidor em /bin (startup).  
+  - Cópie o artefato demo.war localizado em  MagazineLuizaChallengeAPI/target.
+  - Adicione o artefato demo.war na pasta webapps do servidor.
+  - Startar servidor em /bin (startup).  
 
-  Obs: Caso seja essa a opção escolhida para realizar o deploy da aplicação é importante lembrar que a url de acesso aos métodos da classe TwitterAPI será: localhost:8080/demo/api/twitter. É importante verificar o valor da variável API_CONTEXT do arquivo config.js, localizado em : MagazineLuizaChallengeWeb\app\scripts\config.
+  - Obs: Caso seja essa a opção escolhida para realizar o deploy da aplicação é importante lembrar que a url de acesso aos métodos da classe TwitterAPI será: localhost:8080/demo/api/twitter. É importante verificar o valor da variável API_CONTEXT do arquivo config.js, localizado em : MagazineLuizaChallengeWeb\app\scripts\config.
