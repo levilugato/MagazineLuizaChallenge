@@ -11,7 +11,7 @@
  */
 angular.module('magazineLuizaChallengeWebApp')
   .value('Config', {
-  	API_CONTEXT : 'http://localhost:8080/'
+  	API_CONTEXT : 'http://localhost:8080/demo/'
   });
 
 }());

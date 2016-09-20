@@ -24,7 +24,7 @@ import br.com.magazineluizachallenge.service.RegisterTwitterService;
 public class TwitterAPI {
 	
 	
-	public static final String TWITTER_BASE_URI = "api/twitter";
+	public static final String TWITTER_BASE_URI = "/api/twitter";
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
