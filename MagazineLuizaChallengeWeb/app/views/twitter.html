@@ -1,0 +1,38 @@
+<div class="container" > 
+    <div>
+    <h4>{{vm.message}}</h4>
+	<fieldset>
+			<legend>Pesquisar Postagens de Usuários</legend>
+			<div class="col-sm-2 col-md-2 pull-right">
+			<button class="btn btn-success"  ng-click="vm.loggarTwets()" ng-show="vm.tweets.length > 0">Logar Postagens</button>
+			</div>
+			<div class="col-sm-3 col-md-5">
+		        <div class="input-group">
+		            <input type="text" class="form-control" placeholder="Username" ng-model="username" />
+		            <div class="input-group-btn">
+		                <button class="btn btn-default" ng-show="username"><i class="glyphicon glyphicon-search" ng-click="vm.buscarTweetsByUsername(username)"></i></button>
+		            </div>
+		        </div>
+	        </div>
+			<table class="table table-hover" >
+			  <thead>
+			    <tr>
+			      <th>Usuario</th>
+			      <th>Nome</th>
+			      <th>Texto da Postagem</th>
+			      <th>Data Postagem</th>
+			      <th>Profile Url</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<tr ng-repeat="tweets in vm.tweets">
+			      <td>{{tweets.fromUser}}</td>
+			      <td>{{tweets.user.name}}</td>
+			      <td>{{tweets.text}}</td>
+			      <td>{{tweets.createdAt | date}}</td>
+			      <td>{{tweets.user.profileUrl}}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</fieldset>
+</div>
