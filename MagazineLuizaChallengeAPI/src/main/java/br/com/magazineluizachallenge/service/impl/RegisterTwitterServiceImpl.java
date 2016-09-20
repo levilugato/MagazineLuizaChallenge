@@ -2,12 +2,12 @@ package br.com.magazineluizachallenge.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.twitter.api.HashTagEntity;
-import org.springframework.social.twitter.api.Tweet;
 import org.springframework.stereotype.Service;
 
-import br.com.magazineluizachallenge.model.RegisterTwitter;
+import br.com.magazineluizachallenge.model.TweetLog;
 import br.com.magazineluizachallenge.repository.RegisterTwitterRepository;
 import br.com.magazineluizachallenge.service.RegisterTwitterService;
 
@@ -17,43 +17,35 @@ public class RegisterTwitterServiceImpl implements RegisterTwitterService {
 	@Autowired
 	private RegisterTwitterRepository registerTwitterRepository;
 
-	@Override
-	public void logBDTwitter(final List<Tweet> tweets) {
-
-		for (Tweet tweet : tweets) {
-
-			this.registerTwitterRepository.save(setaInformacoesNoObjetoDeLog(tweet));
-		}
-
-	}
-
-	private RegisterTwitter setaInformacoesNoObjetoDeLog(Tweet tweet) {
-
-		RegisterTwitter registerTwitter = new RegisterTwitter();
-
-		registerTwitter.setIdPostagem(tweet.getId());
-		registerTwitter.setUsuario(tweet.getUser().getName());
-		registerTwitter.setScreenName(tweet.getUser().getScreenName());
-		registerTwitter.setProfileUrl(tweet.getUser().getProfileUrl());
-		registerTwitter.setTextoPostagem(tweet.getText());
-		registerTwitter.setHashTags(getHashTag(tweet.getEntities().getHashTags()));
-		
-		return registerTwitter;
-	}
-
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	private String getHashTag(List<HashTagEntity> hashTags){
+
+	/**
+	 * Método responsável por percorrer a lista de objetos do Tipo  TweetLog
+	 * e salvar os mesmos no bando de dados
+	 * 
+	 * @param List<TweetLog>
+	 */
+	@Override
+	public void save(final List<TweetLog> tweets) {
+
+		logger.info("Classe RegisterTwitterServiceImpl - Método save: iniciando processo para salvar informações no banco de dados");
 		
-		StringBuilder result = new StringBuilder();
-		
-		if (!hashTags.isEmpty()) {
-			
-			for (HashTagEntity hashTag : hashTags) {
-                 
-				result.append(hashTag.getText() + " ");
+		try {
+
+			for (TweetLog tweet : tweets) {
+           
+				this.registerTwitterRepository.save(tweet);
+
 			}
+			
+		} catch (Throwable ex) {
+
+			logger.error(
+					"Erro Classe RegisterTwitterServiceImpl - Método save - erro ao salvar informações das postagens no banco de dados : "
+							+ ex.getCause());
 		}
-		
-		return result.toString();
+
 	}
+
 }
