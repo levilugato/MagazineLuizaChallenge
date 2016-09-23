@@ -32,12 +32,9 @@ public class RegisterTwitterServiceImpl implements RegisterTwitterService {
 		logger.info("Classe RegisterTwitterServiceImpl - Método save: iniciando processo para salvar informações no banco de dados");
 		
 		try {
-
-			for (TweetLog tweet : tweets) {
            
-				this.registerTwitterRepository.save(tweet);
+				this.registerTwitterRepository.save(tweets);
 
-			}
 			
 		} catch (Throwable ex) {
 
