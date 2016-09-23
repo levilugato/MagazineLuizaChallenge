@@ -1,6 +1,7 @@
 package br.com.magazineluizachallenge.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class TweetLog implements Serializable{
 
 	private String text;
 
-	private String createdAt;
+	private Calendar createdAt;
 
 	private String profileUrl;
 
@@ -70,11 +71,11 @@ public class TweetLog implements Serializable{
 		this.profileUrl = profileUrl;
 	}
 
-	public String getCreatedAt() {
+	public Calendar getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(Calendar createdAt) {
 		this.createdAt = createdAt;
 	}
 
